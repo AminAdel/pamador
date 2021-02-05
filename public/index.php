@@ -1,3 +1,4 @@
+<?php
 
 // security -> check ip black-list :
 $ip = $_SERVER['REMOTE_ADDR'];
