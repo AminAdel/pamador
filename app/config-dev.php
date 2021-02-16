@@ -13,6 +13,6 @@ return [
 		"password" => ''
 	],
 	
-	'site' => 'sitename.xyz',
+	'app' => 'sitename.xyz',
 	'path_public' => '/path-to/sitename.xyz/public_html/'
 ];
