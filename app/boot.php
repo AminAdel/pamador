@@ -23,27 +23,34 @@ $url_params = URI::get_url_params();
 
 
 // directories :
-$dir_helper = '../app/helpers/';
-$dir_sites = '../app/sites/';
-$dir_methods = '../app/methods/';
+$dir_helpers = '../php/helpers/';
+$dir_apps = '../php/apps/';
+$dir_methods = '../php/methods/';
+$dir_shared = '../php/shared/';
+$dir_shared_views = '../php/shared/views/';
 
 
 // helper functions :
-include_once $dir_helper . 'functions.php';
+include_once $dir_helpers . 'functions.php';
 
 
 //==============================
 
-// domains & sites : (we can do this with db too, but not for now ... maybe later)
+// domains & apps :
 $domain = strtolower($_SERVER['HTTP_HOST']);
-$site = $configs['site'];
-if (in_array($domain, [
-	'sitename.xyz',
-	'sitename2.xyz'
-])) $site = 'sitename.xyz';
-
-// site :
-include_once $dir_sites . $site .'/'. $site . '.php';
+$app = '';
+switch ($domain) {
+	case 'localhost':
+	case '127.0.0.1':
+		$app = $configs['app'];
+		break;
+	case 'develo.ir':
+		$app = 'develo.ir';
+		break;
+	default :
+		$app = 'boomi.biz';
+}
+include_once $dir_apps. $app . '/' . $app . '.php';
 
 //==============================
 
