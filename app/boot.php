@@ -3,6 +3,7 @@
 use Methods\Configs;
 use Methods\MySQL;
 use Methods\Request;
+use Methods\Security;
 
 //==============================
 
@@ -12,20 +13,21 @@ include '../app/helpers.php';
 $configs = Configs::get_configs();
 
 
-$mysql = MySQL::connect($configs['mysql']);
+$mysql_con = MySQL::connect($configs['mysql']);
 
 
-$url = Request::get_url_info();
+$req_info = Request::get_req_info();
 
 
-// security -> block attacks :
-if ($configs['env'] == 'prod') {
-	$security = new Methods\Security();
-	$security->mysql_link = $mysql;
-	$security->max_allowed_rps = $configs['max_allowed_requests_per_second'];
-	$security->max_allowed_warnings = $configs['max_allowed_warnings'];
-	$security->block_attacks();
-}
+Security::init();
+
+// if ($configs['env'] == 'prod') {
+// 	$security = new Methods\Security();
+// 	$security->mysql_link = $mysql_con;
+// 	$security->max_allowed_rps = $configs['max_allowed_requests_per_second'];
+// 	$security->max_allowed_warnings = $configs['max_allowed_warnings'];
+// 	$security->block_attacks();
+// }
 
 
 
@@ -50,6 +52,6 @@ include_once $dir_apps. $app . '/' . $app . '.php';
 //==============================
 
 // close databases :
-mysqli_close($mysql);
+mysqli_close($mysql_con);
 
 /* END */

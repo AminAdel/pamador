@@ -6,7 +6,6 @@ return [
 	
 	
 	'directories' => [
-		'public' => '/',
 	],
 	
 	
@@ -24,5 +23,14 @@ return [
 		'username' => 'root',
 		'password' => ''
 	],
+	
+	
+	
+	// each line is for a different domain :
+	// domain => folder-name
+	'apps' => [
+		'default' => 'app',
+		'google.com' => 'google.com'
+	]
 	
 ];
