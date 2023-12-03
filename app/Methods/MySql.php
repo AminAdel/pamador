@@ -1,6 +1,6 @@
 <?php
 
-namespace Methods;
+namespace App\Methods;
 
 class MySql
 {
@@ -8,8 +8,12 @@ class MySql
 		// host, db, username, password
 		//==============================
 		$con = mysqli_connect($configs['host'], $configs['username'], $configs['password'], $configs['db']);
-		// mysqli_query($con, "set names utf8");
+		mysqli_set_charset($con,"utf8");
 		//==============================
 		return $con;
 	} // 1402.09.09
+	
+	public static function disconnect() : void {
+		mysqli_close($GLOBALS['mysql_con']);
+	}
 }

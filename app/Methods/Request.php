@@ -1,6 +1,6 @@
 <?php
 
-namespace Methods;
+namespace App\Methods;
 
 class Request
 {
@@ -26,11 +26,18 @@ class Request
 	public static function get_params() {
 		$uri_no_query = explode('?', $_SERVER['REQUEST_URI'])[0] ?? $_SERVER['REQUEST_URI'];
 		$params = str_ireplace(self::get_app_root(), '', $uri_no_query);
-		return explode('/', trim($params, '/'));
+		$params = trim($params, '/');
+		if (empty($params)) return [];
+		$params = explode('/', $params);
+		foreach ($params as $index => $param) {
+			if (empty($param)) unset($params[$index]);
+		}
+		$params = array_values($params);
+		return $params;
 	}
 	
 	public static function get_cookies() {
-		$cookies = explode('; ', $_SERVER['HTTP_COOKIE']);
+		$cookies = explode('; ', ($_SERVER['HTTP_COOKIE'] ?? ''));
 		$output = [];
 		foreach ($cookies as $index => $cookie) {
 			$temp = explode('=', $cookie);
