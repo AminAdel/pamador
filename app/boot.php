@@ -1,11 +1,10 @@
 <?php
 
-// $time_start = microtime(true);
-
-use App\Methods\Configs;
-use App\Methods\MySQL;
-use App\Methods\Request;
-use App\Methods\Security;
+use Methods\Configs;
+use Methods\MySQL;
+use Methods\Request;
+use Methods\Response;
+use Methods\Security;
 
 //==============================
 
@@ -33,5 +32,8 @@ include_once '../app/apps/'.$GLOBALS['app'].'/app.php';
 
 MySQL::disconnect();
 
-// dd(microtime(true) - $time_start);
+
+Response::send();
+
+
 /* END */

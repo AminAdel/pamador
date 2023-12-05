@@ -1,5 +1,9 @@
 <?php
 
+// $time_start = microtime(true);
+
+//==============================
+
 // security -> check ip black-list :
 $ip = $_SERVER['REMOTE_ADDR'];
 if ($_SERVER['HTTP_HOST'] == 'localhost') { $ip = '127.0.0.1'; }

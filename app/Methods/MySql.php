@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Methods;
+namespace Methods;
 
 class MySql
 {

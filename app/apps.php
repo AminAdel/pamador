@@ -2,6 +2,9 @@
 
 // for each domain you can specify different app;
 switch ($GLOBALS['req_info']['server_name']) {
+	case 'example.com' :
+		$GLOBALS['app'] = 'example_com';
+		break;
 	default :
 		$GLOBALS['app'] = 'aprofile_website';
 }
