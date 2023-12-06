@@ -27,3 +27,4 @@ switch ($GLOBALS['req_info']['params'][0] ?? '') {
 //==============================
 
 // for each app you must create a folder with app name;
+require '../app/apps/'.$GLOBALS['app'].'/app.php';

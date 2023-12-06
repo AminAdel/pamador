@@ -31,7 +31,18 @@ else {
 	// ~/api
 	elseif ($params[0] === 'api') {
 		
-		// [get] :
-		if ($method === 'get') StaticPagesController::about();
+		if (empty($params[1])) {
+			// [get] :
+			if ($method === 'get') StaticPagesController::about();
+		}
+		
+		//==============================
+		
+		else {
+			// ~/api/panel
+			if ($params[1] === 'panel') {
+				require __DIR__.'./panel/routes.php';
+			}
+		}
 	}
 }

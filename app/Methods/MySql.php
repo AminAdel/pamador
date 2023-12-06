@@ -13,7 +13,7 @@ class MySql
 		return $con;
 	} // 1402.09.09
 	
-	public static function disconnect() : void {
-		mysqli_close($GLOBALS['mysql_con']);
+	public static function disconnect($link = null) : void {
+		mysqli_close($link ?? $GLOBALS['mysql_link']);
 	}
 }

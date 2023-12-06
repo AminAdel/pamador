@@ -3,7 +3,8 @@
 	"type": "project",
 	"require": {
 		"ext-mysqli": "*",
-		"ext-json": "*"
+		"ext-json": "*",
+		"ext-mongo": "*"
 	},
 	"autoload": {
 		"psr-4": {
