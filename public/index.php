@@ -20,4 +20,4 @@ if (file_exists('../ip_blacklist/' . $ip . '.txt')) {
 //==============================
 
 require '../app/vendor/autoload.php';
-include '../app/boot.php';
+require '../app/boot.php';
