@@ -28,6 +28,15 @@ else {
 	
 	//==============================
 	
+	// ~/contact
+	elseif ($params[0] === 'contact') {
+		
+		// [get] :
+		if ($method === 'get') StaticPagesController::contact();
+	}
+	
+	//==============================
+	
 	// ~/api
 	elseif ($params[0] === 'api') {
 		

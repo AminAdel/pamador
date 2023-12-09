@@ -10,6 +10,33 @@ function json_encode_utf8($array) {
 }
 
 
+function objectToArray($objectOrArray) {
+	/*
+	 * version 3.0.0
+	****************/
+	
+	// if is_json -> decode :
+	// if (is_string($objectOrArray) && is_json($objectOrArray)) $objectOrArray = json_decode($objectOrArray, 'JSON_BIGINT_AS_STRING');
+	if (is_string($objectOrArray) && is_json($objectOrArray)) $objectOrArray = json_decode($objectOrArray, true, 512, JSON_BIGINT_AS_STRING);
+	
+	// if object -> convert to array :
+	if (is_object($objectOrArray)) $objectOrArray = (array) $objectOrArray;
+	
+	// if not array -> just return it (probably string or number) :
+	if (!is_array($objectOrArray)) return $objectOrArray;
+	
+	// if empty array -> return [] :
+	if (count($objectOrArray) == 0) return [];
+	
+	// repeat tasks for each item :
+	$output = [];
+	foreach ($objectOrArray as $key => $o_a) {
+		$output[$key] = objectToArray($o_a);
+	}
+	return $output;
+}
+
+
 function is_json($string) {
 	// php 5.3 or newer needed;
 	json_decode($string);
@@ -17,8 +44,12 @@ function is_json($string) {
 } // done
 
 
-function generateRandomString($length = 10) {
-	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+function generateRandomString($length = 10, $numbers = true, $lowercase = true, $uppercase = true, $special = true) {
+	$characters = '';
+	if ($numbers) $characters .= '01234567890123456789'; // weight = 2
+	if ($lowercase) $characters .= 'abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz'; // weight = 2
+	if ($uppercase) $characters .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'; // weight = 2
+	if ($special) $characters .= '~!@#$%^&*()-_=+[]{}|<>?/.,'; // weight = 1
 	$charactersLength = strlen($characters);
 	$randomString = '';
 	for ($i = 0; $i < $length; $i++) {

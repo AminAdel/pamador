@@ -4,6 +4,10 @@ return [
 	'env' => 'prod',
 	
 	
+	'response_default_contentType' => 'application/json',
+	'response_default_code' => 200,
+	
+	
 	'db_default' => 'mysql',
 	
 	
@@ -23,4 +27,7 @@ return [
 		'username' => 'root',
 		'password' => ''
 	],
+	
+	
+	'secret_phrase' => 'N^&qCH[rcC/q/hH$AR{b', // after set, do not change. if you change -> old hashes and tokens will not work;
 ];

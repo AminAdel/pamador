@@ -31,15 +31,21 @@ class Response
 	
 	
 	public static function set_http_code($code_number) : void {
-		http_response_code(404);
+		http_response_code($code_number);
 	} // 1402.09.14
 	
 	
-	public static function send($content = '') : void {
+	public static function send($content = '', $content_type = null, $http_code = null) : void {
 		if (empty($content)) {
 			self::set_content_type("application/json");
 			$content = '{"statusCode": '.http_response_code().'}';
 		}
+		if (!empty($content_type)) {
+			self::set_content_type($content_type);
+		}
+		if (!empty($http_code)) {
+			self::set_http_code($http_code);
+		}
 		echo $content;
-	}
+	} // 1402.09.15
 }

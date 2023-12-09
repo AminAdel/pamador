@@ -16,7 +16,7 @@ class Security
 	//==============================
 	
 	public static function init() {
-		// todo;
+		self::control_rps();
 	}
 	
 	private static function prevent_sql_injection() {
@@ -24,7 +24,11 @@ class Security
 	}
 	
 	private static function control_rps() {
-	
+		$ip_info = RPS::get_ip_info();
+		if ($ip_info['blocked']) {
+			Response::send(json_encode_utf8(['message' => 'your IP has been blocked for unusual activity']));
+			exit();
+		}
 	}
 	
 	//==============================

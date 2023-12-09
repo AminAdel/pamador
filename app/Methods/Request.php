@@ -20,6 +20,11 @@ class Request
 		$output['queries'] = $_GET;
 		if ($output['method'] != 'get') $output['inputs'] = $_POST;
 		//==============================
+		// ip :
+		$output['ip'] = $_SERVER['REMOTE_ADDR'];
+		if ($_SERVER['HTTP_HOST'] == 'localhost') { $ip = '127.0.0.1'; }
+		$output['ip'] = preg_replace("/[^0-9.]/", "", $output['ip']);
+		//==============================
 		return $output;
 	}
 	

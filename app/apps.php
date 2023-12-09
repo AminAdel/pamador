@@ -12,11 +12,15 @@ switch ($GLOBALS['req_info']['server_name']) {
 //==============================
 
 // for each url parameter you can specify different app;
+// if set -> use array_shift to remove first parameter;
 switch ($GLOBALS['req_info']['params'][0] ?? '') {
+	// case 'aprofile_website':
+	// 	$GLOBALS['app'] = 'aprofile_website';
+	// 	array_shift($GLOBALS['req_info']['params']);
+	// 	break;
 	default :
 		$GLOBALS['app'] = 'aprofile_website';
 }
-
 //==============================
 
 // you can write your logic to switch between apps :
@@ -27,4 +31,3 @@ switch ($GLOBALS['req_info']['params'][0] ?? '') {
 //==============================
 
 // for each app you must create a folder with app name;
-require '../app/apps/'.$GLOBALS['app'].'/app.php';
