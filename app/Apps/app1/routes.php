@@ -1,6 +1,6 @@
 <?php
 
-use Apps\aprofile_website\Controllers\StaticPagesController;
+use Apps\App1\Controllers\StaticPagesController;
 
 //==============================
 
