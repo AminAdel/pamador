@@ -1,6 +1,6 @@
 <?php
 
-namespace Apps\aprofile_website\Controllers;
+namespace Apps\app1\Controllers;
 
 use Methods\Response;
 
