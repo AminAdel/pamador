@@ -1,6 +1,6 @@
 <?php
 
-use Apps\App1\Controllers\StaticPagesController;
+use Apps\app1\Controllers\StaticPagesController;
 
 //==============================
 
