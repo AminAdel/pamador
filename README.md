@@ -1,2 +1,2 @@
 # pamador (in development)
-Easy, Simple and Configurable "PHP-Framework"
+Easy, Simple, Fast and Configurable "PHP-Framework"
